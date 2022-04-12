@@ -37,7 +37,7 @@ Loop
 	MouseMove, 1, 1, 50, R
 	ToolTip, Press Win-Z again to stop this from flashing.
     Sleep 500
-    ToolTip	
+    ToolTip, Press Win-Z again to stop this from flashing.
 	MouseMove, -1, -1, 50, R
 	Sleep 500
     if not KeepWinZRunning 
