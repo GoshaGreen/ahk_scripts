@@ -21,6 +21,31 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; AlwayOnTop toggle by pressing CTRL+ALT+T
 !^t::  Winset, Alwaysontop, , A
 
+; toggle mouse moving by pressing WIN+Z 
+#MaxThreadsPerHotkey 3
+#z::
+#MaxThreadsPerHotkey 1
+if KeepWinZRunning
+{
+    KeepWinZRunning := false
+    return
+}
+; Otherwise:
+KeepWinZRunning := true
+Loop
+{
+	MouseMove, 1, 1, 50, R
+	ToolTip, Press Win-Z again to stop this from flashing.
+    Sleep 500
+    ToolTip	
+	MouseMove, -1, -1, 50, R
+	Sleep 500
+    if not KeepWinZRunning 
+        break
+}
+KeepWinZRunning := false
+return
+
 ; turn russian language by pressing Right CTRL
 #IfWinNotActive ahk_exe mstsc.exe
 RCtrl::
