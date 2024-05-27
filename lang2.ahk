@@ -80,10 +80,8 @@ SetDefaultKeyboard(LocaleID){ ; for language codes: https://www.autohotkey.com/d
         err := DllCall("GetLastError")
         MsgBox(Format("Error occured: 0x{:08x}", err))
     }
-    ids := WinGetList(,,)
-    for this_id in ids {
-        PostMessage(0x50, 0, Lan, , Format("ahk_id 0x{:08x}", this_id))
-    }
+    this_id := WinGetID("A")
+    PostMessage(0x50, 0, Lan, , Format("ahk_id 0x{:08x}", this_id))
 }
 
 ; ============
